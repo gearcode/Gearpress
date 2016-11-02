@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="mysql-connector-java-5.1.20.jar"/>
+
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+
+        <!-- 开启分页插件 -->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+
+        <!-- 去掉注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1/gearpress"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetProject="src/main/java"
+                            targetPackage="com.gearcode.gearpress.domain">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetProject="src/main/resources" targetPackage="mapping">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetProject="src/main/java" targetPackage="com.gearcode.gearpress.dao"
+                             type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--
+            以下是具体的表生成配置
+        -->
+        <table tableName="user" domainObjectName="User"></table>
+        <table tableName="column" domainObjectName="Column"></table>
+        <table tableName="article" domainObjectName="Article"></table>
+        <table tableName="commnet" domainObjectName="Commnet"></table>
+        <table tableName="option" domainObjectName="Option"></table>
+
+    </context>
+</generatorConfiguration>
