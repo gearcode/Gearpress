@@ -30,7 +30,7 @@ public class TestMybatis {
     UserMapper userMapper;
 
     @Test
-    public void testInterest(){
+    public void testSelect(){
         UserExample example = new UserExample();
         example.createCriteria().andUsernameEqualTo("liteng");
         List<User> users = userMapper.selectByExample(example);
