@@ -415,6 +415,66 @@ public class ArticleExample {
             return (Criteria) this;
         }
 
+        public Criteria andViewsIsNull() {
+            addCriterion("views is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsIsNotNull() {
+            addCriterion("views is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsEqualTo(Long value) {
+            addCriterion("views =", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsNotEqualTo(Long value) {
+            addCriterion("views <>", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsGreaterThan(Long value) {
+            addCriterion("views >", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsGreaterThanOrEqualTo(Long value) {
+            addCriterion("views >=", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsLessThan(Long value) {
+            addCriterion("views <", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsLessThanOrEqualTo(Long value) {
+            addCriterion("views <=", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsIn(List<Long> values) {
+            addCriterion("views in", values, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsNotIn(List<Long> values) {
+            addCriterion("views not in", values, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsBetween(Long value1, Long value2) {
+            addCriterion("views between", value1, value2, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsNotBetween(Long value1, Long value2) {
+            addCriterion("views not between", value1, value2, "views");
+            return (Criteria) this;
+        }
+
         public Criteria andPostTimeIsNull() {
             addCriterion("post_time is null");
             return (Criteria) this;

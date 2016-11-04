@@ -13,6 +13,8 @@ public class Article {
 
     private Byte status;
 
+    private Long views;
+
     private Date postTime;
 
     private Date updateTime;
@@ -59,6 +61,14 @@ public class Article {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public Long getViews() {
+        return views;
+    }
+
+    public void setViews(Long views) {
+        this.views = views;
     }
 
     public Date getPostTime() {

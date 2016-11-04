@@ -44,11 +44,11 @@
         <!--
             以下是具体的表生成配置
         -->
-        <table tableName="user" domainObjectName="User"></table>
-        <table tableName="column" domainObjectName="Column"></table>
-        <table tableName="article" domainObjectName="Article"></table>
-        <table tableName="commnet" domainObjectName="Commnet"></table>
-        <table tableName="option" domainObjectName="Option"></table>
+        <table tableName="gp_user" domainObjectName="User"></table>
+        <table tableName="gp_column" domainObjectName="Column"></table>
+        <table tableName="gp_article" domainObjectName="Article"></table>
+        <table tableName="gp_comment" domainObjectName="Comment"></table>
+        <table tableName="gp_option" domainObjectName="Option"></table>
 
     </context>
 </generatorConfiguration>

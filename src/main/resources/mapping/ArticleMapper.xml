@@ -7,6 +7,7 @@
     <result column="column_id" property="columnId" jdbcType="BIGINT" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="views" property="views" jdbcType="BIGINT" />
     <result column="post_time" property="postTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
@@ -73,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, column_id, title, status, post_time, update_time, create_time
+    id, user_id, column_id, title, status, views, post_time, update_time, create_time
   </sql>
   <sql id="Blob_Column_List" >
     content
@@ -86,7 +87,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from article
+    from gp_article
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -100,7 +101,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from article
+    from gp_article
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -113,31 +114,31 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from article
+    from gp_article
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from article
+    delete from gp_article
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.gearcode.gearpress.domain.ArticleExample" >
-    delete from article
+    delete from gp_article
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.gearcode.gearpress.domain.Article" >
-    insert into article (id, user_id, column_id, 
-      title, status, post_time, 
-      update_time, create_time, content
-      )
+    insert into gp_article (id, user_id, column_id, 
+      title, status, views, 
+      post_time, update_time, create_time, 
+      content)
     values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{columnId,jdbcType=BIGINT}, 
-      #{title,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{postTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
-      )
+      #{title,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{views,jdbcType=BIGINT}, 
+      #{postTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gearcode.gearpress.domain.Article" >
-    insert into article
+    insert into gp_article
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -153,6 +154,9 @@
       </if>
       <if test="status != null" >
         status,
+      </if>
+      <if test="views != null" >
+        views,
       </if>
       <if test="postTime != null" >
         post_time,
@@ -183,6 +187,9 @@
       <if test="status != null" >
         #{status,jdbcType=TINYINT},
       </if>
+      <if test="views != null" >
+        #{views,jdbcType=BIGINT},
+      </if>
       <if test="postTime != null" >
         #{postTime,jdbcType=TIMESTAMP},
       </if>
@@ -198,13 +205,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.gearcode.gearpress.domain.ArticleExample" resultType="java.lang.Integer" >
-    select count(*) from article
+    select count(*) from gp_article
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update article
+    update gp_article
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
@@ -220,6 +227,9 @@
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.views != null" >
+        views = #{record.views,jdbcType=BIGINT},
       </if>
       <if test="record.postTime != null" >
         post_time = #{record.postTime,jdbcType=TIMESTAMP},
@@ -239,12 +249,13 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update article
+    update gp_article
     set id = #{record.id,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT},
       column_id = #{record.columnId,jdbcType=BIGINT},
       title = #{record.title,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=TINYINT},
+      views = #{record.views,jdbcType=BIGINT},
       post_time = #{record.postTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -254,12 +265,13 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update article
+    update gp_article
     set id = #{record.id,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT},
       column_id = #{record.columnId,jdbcType=BIGINT},
       title = #{record.title,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=TINYINT},
+      views = #{record.views,jdbcType=BIGINT},
       post_time = #{record.postTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
@@ -268,7 +280,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.gearcode.gearpress.domain.Article" >
-    update article
+    update gp_article
     <set >
       <if test="userId != null" >
         user_id = #{userId,jdbcType=BIGINT},
@@ -281,6 +293,9 @@
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="views != null" >
+        views = #{views,jdbcType=BIGINT},
       </if>
       <if test="postTime != null" >
         post_time = #{postTime,jdbcType=TIMESTAMP},
@@ -298,11 +313,12 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gearcode.gearpress.domain.Article" >
-    update article
+    update gp_article
     set user_id = #{userId,jdbcType=BIGINT},
       column_id = #{columnId,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
       status = #{status,jdbcType=TINYINT},
+      views = #{views,jdbcType=BIGINT},
       post_time = #{postTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -310,11 +326,12 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gearcode.gearpress.domain.Article" >
-    update article
+    update gp_article
     set user_id = #{userId,jdbcType=BIGINT},
       column_id = #{columnId,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
       status = #{status,jdbcType=TINYINT},
+      views = #{views,jdbcType=BIGINT},
       post_time = #{postTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP}
@@ -328,7 +345,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from article
+    from gp_article
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -342,7 +359,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from article
+    from gp_article
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>

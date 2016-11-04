@@ -80,7 +80,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from option
+    from gp_option
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -94,7 +94,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from option
+    from gp_option
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -107,27 +107,27 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from option
+    from gp_option
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from option
+    delete from gp_option
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.gearcode.gearpress.domain.OptionExample" >
-    delete from option
+    delete from gp_option
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.gearcode.gearpress.domain.Option" >
-    insert into option (id, name, value
+    insert into gp_option (id, name, value
       )
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{value,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.gearcode.gearpress.domain.Option" >
-    insert into option
+    insert into gp_option
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -152,13 +152,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.gearcode.gearpress.domain.OptionExample" resultType="java.lang.Integer" >
-    select count(*) from option
+    select count(*) from gp_option
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update option
+    update gp_option
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
@@ -175,7 +175,7 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update option
+    update gp_option
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       value = #{record.value,jdbcType=LONGVARCHAR}
@@ -184,7 +184,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update option
+    update gp_option
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -192,7 +192,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.gearcode.gearpress.domain.Option" >
-    update option
+    update gp_option
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -204,13 +204,13 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gearcode.gearpress.domain.Option" >
-    update option
+    update gp_option
     set name = #{name,jdbcType=VARCHAR},
       value = #{value,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gearcode.gearpress.domain.Option" >
-    update option
+    update gp_option
     set name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -222,7 +222,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from option
+    from gp_option
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -236,7 +236,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from option
+    from gp_option
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>

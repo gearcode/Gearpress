@@ -75,7 +75,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from column
+    from gp_column
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,27 +86,27 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from column
+    from gp_column
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from column
+    delete from gp_column
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.gearcode.gearpress.domain.ColumnExample" >
-    delete from column
+    delete from gp_column
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.gearcode.gearpress.domain.Column" >
-    insert into column (id, name, prority, 
+    insert into gp_column (id, name, prority, 
       is_show, create_time)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{prority,jdbcType=INTEGER}, 
       #{isShow,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.gearcode.gearpress.domain.Column" >
-    insert into column
+    insert into gp_column
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -143,13 +143,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.gearcode.gearpress.domain.ColumnExample" resultType="java.lang.Integer" >
-    select count(*) from column
+    select count(*) from gp_column
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update column
+    update gp_column
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
@@ -172,7 +172,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update column
+    update gp_column
     set id = #{record.id,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       prority = #{record.prority,jdbcType=INTEGER},
@@ -183,7 +183,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.gearcode.gearpress.domain.Column" >
-    update column
+    update gp_column
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -201,7 +201,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gearcode.gearpress.domain.Column" >
-    update column
+    update gp_column
     set name = #{name,jdbcType=VARCHAR},
       prority = #{prority,jdbcType=INTEGER},
       is_show = #{isShow,jdbcType=TINYINT},
@@ -214,7 +214,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from column
+    from gp_column
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
