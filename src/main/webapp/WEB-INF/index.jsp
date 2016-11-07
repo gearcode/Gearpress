@@ -27,36 +27,8 @@
     </head>
     <body>
         <div class="main-content" style="width: 790px; margin: 20px auto;">
-
             <!-- 导航栏 -->
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">首页</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">技术笔记</a></li>
-                            <li><a href="#">问题解决</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">未登录</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">liteng <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">修改密码</a></li>
-                                    <li><a href="#">文章管理</a></li>
-                                    <li><a href="#">栏目管理</a></li>
-                                    <li><a href="#">审核评论</a></li>
-                                    <li><a href="#">系统设置</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">退出登录</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
+            <jsp:include page="explore/common/nav.jsp"></jsp:include>
 
             <!-- 轮播组件 -->
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width:790px;height:340px;">
@@ -92,31 +64,7 @@
             </div>
 
             <h1 style="font-weight: bold;">近期发布的文章</h1>
-            <div class="article_wrap">
-                <c:forEach var="item" items="${articles}">
-                    <div class="bs-callout bs-callout-info">
-                        <h4>${item.title}</h4>
-                        <div>作者：${item.user.name} | <fmt:formatDate pattern="yyyy-MM-dd" value="${item.postTime}"/></div>
-                        <div>
-                            <span class="icon-group">
-                                <span class="glyphicon glyphicon-eye-open"></span>
-                                <span class="words">${item.views}</span>
-                            </span>
-                            <span class="icon-group" style="margin-left: 10px;">
-                                <span class="glyphicon glyphicon-comment"></span>
-                                <span class="words">${fn:length(item.comments)}</span>
-                            </span>
-                        </div>
-                        <div class="article-abstract">
-                            ${fn:substring(item.content, 0, 500)}
-                            ......
-                        </div>
-                    </div>
-
-                </c:forEach>
-
-            </div>
-
+            <jsp:include page="explore/common/article_list.jsp"></jsp:include>
 
         </div>
 

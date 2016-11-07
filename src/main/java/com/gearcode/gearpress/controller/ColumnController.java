@@ -7,11 +7,11 @@ import com.gearcode.gearpress.dao.CommentMapper;
 import com.gearcode.gearpress.dao.UserMapper;
 import com.gearcode.gearpress.domain.*;
 import com.gearcode.gearpress.vo.ArticleVO;
-import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,55 +20,59 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by liteng3 on 2016/11/3.
+ * Created by liteng3 on 2016/11/7.
  */
 @Controller
-@RequestMapping(value = "/")
-public class MainController {
+@RequestMapping(value = "/column")
+public class ColumnController {
+    private static final Logger logger = LoggerFactory.getLogger(ColumnController.class);
 
-    private static final Logger logger = LoggerFactory.getLogger(MainController.class);
-
-    @Autowired
-    ArticleMapper articleMapper;
     @Autowired
     UserMapper userMapper;
-    @Autowired
-    ColumnMapper columnMapper;
+
     @Autowired
     CommentMapper commentMapper;
 
-    @RequestMapping("")
-    public String index(HttpServletRequest request, HttpServletResponse response) {
+    @Autowired
+    ArticleMapper articleMapper;
+
+    @Autowired
+    ColumnMapper columnMapper;
+
+    @RequestMapping("/{columnId}")
+    public String column(@PathVariable("columnId") Long columnId,
+            HttpServletRequest request, HttpServletResponse response) {
+        /*
+        当前浏览栏目
+         */
+        ColumnExample columnExample = new ColumnExample();
+        Column column = columnMapper.selectByPrimaryKey(columnId);
+        request.setAttribute("column", column);
 
         /*
         查询全部栏目
          */
-        ColumnExample columnExample = new ColumnExample();
-        columnExample.createCriteria().andIsShowEqualTo((byte)1);
-        columnExample.setOrderByClause("prority asc");
-        List<Column> columns = columnMapper.selectByExample(columnExample);
+        ColumnExample showColumnExample = new ColumnExample();
+        showColumnExample.createCriteria().andIsShowEqualTo((byte)1);
+        showColumnExample.setOrderByClause("prority asc");
+        List<Column> columns = columnMapper.selectByExample(showColumnExample);
         request.setAttribute("columns", columns);
 
         /*
-        查询最近文章
+        查询栏目下文章
          */
         List<ArticleVO> articleVOs = new ArrayList<ArticleVO>();
         ArticleExample articleExample = new ArticleExample();
+        articleExample.createCriteria().andColumnIdEqualTo(columnId);
         articleExample.setOrderByClause("id desc");
-        List<Article> articles = articleMapper.selectByExampleWithBLOBsWithRowbounds(articleExample,  new RowBounds(0, 10));
+        List<Article> articles = articleMapper.selectByExampleWithBLOBs(articleExample);
         for (Article article : articles) {
             articleVOs.add(assembleArticleVO(article));
         }
         request.setAttribute("articles", articleVOs);
-        return "index";
-    }
 
-    @RequestMapping("articles")
-    public String articles(HttpServletRequest request, HttpServletResponse response) {
-        logger.info("articles");
-        return "articles";
+        return "explore/column";
     }
-
 
     private ArticleVO assembleArticleVO(Article article) {
         ArticleVO articleVO = JSON.parseObject(JSON.toJSONString(article), ArticleVO.class);
