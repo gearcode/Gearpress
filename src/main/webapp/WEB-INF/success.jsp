@@ -12,11 +12,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>出错了 - Gearpress</title>
+        <title>操作成功 - Gearpress</title>
 
         <!-- Bootstrap -->
         <link href="<%=path %>/plugin/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
         <link href="<%=path %>/plugin/bootstrap3/css/docs.min.css" rel="stylesheet">
+
+        <!-- main.css -->
+        <link href="<%=path %>/css/main.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,10 +30,10 @@
     </head>
     <body>
         <div class="main-content" style="width: 790px; margin: 20px auto;">
-            <div class="jumbotron" style="padding: 60px; color: #c7254e;">
-                <h1><span class="glyphicon glyphicon-remove-sign red" style="top: 8px;"></span>出错了</h1>
+            <div class="jumbotron" style="padding: 60px; color: #4cae4c;">
+                <h1><span class="glyphicon glyphicon-ok-sign" style="top: 8px;"></span>操作成功</h1>
                 <p>${message}</p>
-                <p><a class="btn btn-primary btn-lg" href="javascript:history.go(-1)" role="button">返回上一页</a></p>
+                <p><a class="btn btn-success btn-lg" href="javascript:history.go(-1)" role="button">返回上一页</a></p>
             </div>
         </div>
 

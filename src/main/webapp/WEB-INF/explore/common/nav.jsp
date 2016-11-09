@@ -51,12 +51,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">${sessionScope.loginUser.name } <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="<%=path%>/user/password">修改密码</a></li>
                             <li><a href="#">文章管理</a></li>
                             <li><a href="#">栏目管理</a></li>
                             <li><a href="#">审核评论</a></li>
                             <li><a href="#">系统设置</a></li>
                             <li class="divider"></li>
+                            <li><a href="<%=path%>/user/password">修改密码</a></li>
                             <li><a href="<%=path%>/user/logout">退出登录</a></li>
                         </ul>
                     </li>

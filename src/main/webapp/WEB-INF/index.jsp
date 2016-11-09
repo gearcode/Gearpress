@@ -18,6 +18,9 @@
         <link href="<%=path %>/plugin/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
         <link href="<%=path %>/plugin/bootstrap3/css/docs.min.css" rel="stylesheet">
 
+        <!-- main.css -->
+        <link href="<%=path %>/css/main.css" rel="stylesheet">
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -63,7 +66,7 @@
                 </a>
             </div>
 
-            <h1 style="font-weight: bold;">近期发布的文章</h1>
+            <h1>近期发布的文章</h1>
             <jsp:include page="explore/common/article_list.jsp"></jsp:include>
 
         </div>

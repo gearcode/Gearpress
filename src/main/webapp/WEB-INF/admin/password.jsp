@@ -18,6 +18,9 @@
         <link href="<%=path %>/plugin/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
         <link href="<%=path %>/plugin/bootstrap3/css/docs.min.css" rel="stylesheet">
 
+        <!-- main.css -->
+        <link href="<%=path %>/css/main.css" rel="stylesheet">
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -51,6 +54,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary">修改密码</button>
+                        <button type="button" class="btn btn-default" onclick="history.go(-1)">返回</button>
                     </div>
                 </div>
             </form>

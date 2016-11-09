@@ -18,6 +18,9 @@
         <link href="<%=path %>/plugin/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
         <link href="<%=path %>/plugin/bootstrap3/css/docs.min.css" rel="stylesheet">
 
+        <!-- main.css -->
+        <link href="<%=path %>/css/main.css" rel="stylesheet">
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -30,7 +33,7 @@
             <!-- 导航栏 -->
             <jsp:include page="common/nav.jsp"></jsp:include>
 
-            <h1 style="font-weight: bold;">文章列表</h1>
+            <h1>文章列表</h1>
             <jsp:include page="common/article_list.jsp"></jsp:include>
         </div>
 

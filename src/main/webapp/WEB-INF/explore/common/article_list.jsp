@@ -11,13 +11,20 @@
     <c:forEach var="item" items="${articles}">
         <div class="bs-callout bs-callout-info">
             <h4><a href="<%=path%>/article/${item.id}">${item.title}</a></h4>
-            <div>作者：${item.user.name} | <fmt:formatDate pattern="yyyy-MM-dd" value="${item.postTime}"/></div>
-            <div>
+            <div class="article-status">
+                <span class="icon-group">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                    <span class="words"><fmt:formatDate pattern="yyyy年MM月dd日" value="${item.postTime}"/></span>
+                </span>
+                <span class="icon-group">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="words">${item.user.name}</span>
+                </span>
                 <span class="icon-group">
                     <span class="glyphicon glyphicon-eye-open"></span>
                     <span class="words">${item.views}</span>
                 </span>
-                <span class="icon-group" style="margin-left: 10px;">
+                <span class="icon-group">
                     <span class="glyphicon glyphicon-comment"></span>
                     <span class="words">${fn:length(item.comments)}</span>
                 </span>
