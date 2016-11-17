@@ -86,19 +86,20 @@
                 <form action="<%=path%>/comment" method="post">
                     <div class="form-group">
                         <label for="comment_name">您的姓名</label>
-                        <input type="text" name="comment_name" class="form-control" id="comment_name" placeholder="您的姓名">
+                        <input type="text" name="comment_name" class="form-control" id="comment_name" placeholder="您的姓名" maxlength="15" required>
                     </div>
                     <div class="form-group">
                         <label for="comment_contact">联系方式</label>
-                        <input type="text" name="comment_contact" class="form-control" id="comment_contact" placeholder="联系方式">
+                        <input type="text" name="comment_contact" class="form-control" id="comment_contact" placeholder="联系方式" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label for="comment_content">评论内容</label>
                         <div class="text-wrap">
-                                <textarea id="comment_content" name="comment_content" placeholder="说点什么吧..."></textarea>
-                                <div class="comments-bottom">
-                                    <button>发表评论</button>
-                                </div>
+                            <textarea id="comment_content" name="comment_content" placeholder="说点什么吧..." maxlength="800" required></textarea>
+                            <div class="comments-bottom">
+                                <input type="hidden" name="article_id" value="${article.id}" />
+                                <button type="submit">发表评论</button>
+                            </div>
                         </div>
                     </div>
                 </form>

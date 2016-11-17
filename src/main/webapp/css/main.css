@@ -123,3 +123,12 @@ body, button, input, select, textarea {
     color:#BFBFBF;
     font-size:13px;
 }
+
+.comments-list .comment-article {
+    margin-top: 10px;
+}
+
+.comments-list .comment-admin {
+    margin-bottom: 10px;
+    align: right;
+}

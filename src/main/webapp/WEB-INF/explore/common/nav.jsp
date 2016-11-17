@@ -53,7 +53,7 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">文章管理</a></li>
                             <li><a href="#">栏目管理</a></li>
-                            <li><a href="#">审核评论</a></li>
+                            <li><a href="<%=path%>/comment/list">审核评论</a></li>
                             <li><a href="#">系统设置</a></li>
                             <li class="divider"></li>
                             <li><a href="<%=path%>/user/password">修改密码</a></li>

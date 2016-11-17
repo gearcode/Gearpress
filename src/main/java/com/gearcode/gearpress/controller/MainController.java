@@ -87,7 +87,9 @@ public class MainController {
 
         //查询评论
         CommentExample commentExample = new CommentExample();
-        commentExample.createCriteria().andArticleIdEqualTo(article.getId());
+        commentExample.createCriteria()
+                .andArticleIdEqualTo(article.getId())
+                .andStatusEqualTo((byte) 1);
         List<Comment> comments = commentMapper.selectByExample(commentExample);
         articleVO.setComments(comments);
 

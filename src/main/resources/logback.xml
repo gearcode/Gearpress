@@ -6,20 +6,20 @@
         </encoder>
     </appender>
 
-    <appender name="INFO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/export/Logs/gearpress/info.log</file>
-        <append>true</append>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/export/Logs/gearpress/info.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>100MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-            <maxHistory>100</maxHistory>
-        </rollingPolicy>
-        <encoder charset="UTF-8">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{80} [%L] - %msg%n</pattern>
-        </encoder>
-    </appender>
+    <!--<appender name="INFO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>/export/Logs/gearpress/info.log</file>-->
+        <!--<append>true</append>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<fileNamePattern>/export/Logs/gearpress/info.%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+            <!--<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+                <!--<maxFileSize>100MB</maxFileSize>-->
+            <!--</timeBasedFileNamingAndTriggeringPolicy>-->
+            <!--<maxHistory>100</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder charset="UTF-8">-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{80} [%L] - %msg%n</pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
 
 
     <root level="info">
