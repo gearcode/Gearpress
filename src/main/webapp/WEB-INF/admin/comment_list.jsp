@@ -13,25 +13,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>审核评论 - Gearpress</title>
-
-        <!-- Bootstrap -->
-        <link href="<%=path %>/plugin/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<%=path %>/plugin/bootstrap3/css/docs.min.css" rel="stylesheet">
-
-        <!-- main.css -->
-        <link href="<%=path %>/css/main.css" rel="stylesheet">
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="<%=path %>/plugin/html5/html5shiv.min.js"></script>
-            <script src="<%=path %>/plugin/html5/respond.min.js"></script>
-        <![endif]-->
+        <jsp:include page="../common/include_css.jsp"></jsp:include>
     </head>
     <body>
         <div class="main-content" style="width: 790px; margin: 20px auto;">
             <!-- 导航栏 -->
-            <jsp:include page="common/nav.jsp"></jsp:include>
+            <jsp:include page="../common/nav.jsp"></jsp:include>
 
             <h4 style="margin-top: 20px;">共有<span id="comments_count" style="color:#d32; margin: 0 4px;">${fn:length(comments)}</span>条评论</h4>
             <!-- 评论列表 -->
@@ -58,7 +45,7 @@
                             <c:if test="${item.status != 1}">
                                 &nbsp;
                                 <button class="btn btn-success btn-sm" data-record-id="${item.id}">
-                                    <span class="glyphicon glyphicon-ok"></span> 通过
+                                    <span class="glyphicon glyphicon-check"></span> 通过
                                 </button>
                             </c:if>
                         </div>
@@ -84,11 +71,7 @@
             </div>
         </div>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="<%=path %>/plugin/jquery/jquery-1.11.1.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="<%=path %>/plugin/bootstrap3/js/bootstrap.min.js"></script>
-
+        <jsp:include page="../common/include_js.jsp"></jsp:include>
 
         <script>
 
@@ -102,7 +85,7 @@
 
                 $.ajax({
                     type:"DELETE",
-                    url:"http://localhost:10080/comment/"+id,
+                    url:"<%=path%>/comment/"+id,
                     success:function(data){
                         if(data == "success") {
                             $modalDiv.modal('hide').removeClass('loading');
@@ -126,7 +109,7 @@
                 var data = $(e.target).data();
                 $.ajax({
                     type:"PUT",
-                    url:"http://localhost:10080/comment/"+data.recordId,
+                    url:"<%=path%>/comment/"+data.recordId,
                     success:function(data){
                         if(data == "success") {
                             $(e.target).remove();

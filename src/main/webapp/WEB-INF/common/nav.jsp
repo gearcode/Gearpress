@@ -6,7 +6,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String path = request.getContextPath();
 %>
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse navbar-embossed" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">首页</a>
@@ -21,7 +21,7 @@
                 <c:if test="${sessionScope.loginUser == null}">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>登录</b> <span class="caret"></span></a>
-                        <ul class="dropdown-menu" style="min-width: 250px; padding: 14px 14px 0; overflow: hidden; background-color: rgba(255,255,255,.8);">
+                        <ul class="dropdown-menu" style="min-width: 250px; padding: 14px 14px 0; overflow: hidden;">
                             <li>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -30,12 +30,12 @@
                                         <form class="form" role="form" method="post" action="<%=path%>/user/login" onsubmit="$('#input_password_encode').val(md5($('#input_password').val()));$('#input_password').val('')">
                                             <div class="form-group">
                                                  <label class="sr-only" for="input_username">用户名</label>
-                                                 <input name="username" type="text" class="form-control" id="input_username" placeholder="用户名" required>
+                                                 <input name="username" type="text" class="form-control flat" id="input_username" placeholder="用户名" required>
                                             </div>
                                             <div class="form-group">
                                                  <label class="sr-only" for="input_password">密码</label>
-                                                 <input name="password" type="password" class="form-control" id="input_password" placeholder="密码" required>
-                                                 <input name="password_encode" type="hidden" class="form-control" id="input_password_encode" />
+                                                 <input name="password" type="password" class="form-control flat" id="input_password" placeholder="密码" required>
+                                                 <input name="password_encode" type="hidden" id="input_password_encode" />
                                             </div>
                                             <div class="form-group">
                                                  <button type="submit" class="btn btn-primary btn-block">登录</button>
@@ -51,10 +51,10 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">${sessionScope.loginUser.name } <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">文章管理</a></li>
-                            <li><a href="#">栏目管理</a></li>
+                            <li><a href="<%=path%>/article/list">文章管理</a></li>
+                            <li><a href="<%=path%>/column/list">栏目管理</a></li>
                             <li><a href="<%=path%>/comment/list">审核评论</a></li>
-                            <li><a href="#">系统设置</a></li>
+                            <li><a href="<%=path%>/system/config">系统设置</a></li>
                             <li class="divider"></li>
                             <li><a href="<%=path%>/user/password">修改密码</a></li>
                             <li><a href="<%=path%>/user/logout">退出登录</a></li>

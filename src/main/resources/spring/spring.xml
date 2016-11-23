@@ -68,13 +68,8 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
-    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">-->
-        <!--<property name="interceptors">-->
-            <!--<list>-->
-                <!--<bean class="com.gearcode.gearpress.interceptor.LoginInterceptor"></bean>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
+    <!-- 设置上传文件, 一旦某个Request是一个MultipartRequest，它就会首先被MultipartResolver处理，然后再转发相应的Controller。 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
     <!-- 主键生成工具初始化 -->
     <bean id="idWorker" class="com.gearcode.gearpress.util.IdWorker" factory-method="getInstance">

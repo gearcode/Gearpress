@@ -147,7 +147,7 @@ public class CommentController {
 
         request.setAttribute("comments", commentVOs);
 
-        return "explore/comment_list";
+        return "admin/comment_list";
     }
 
     private CommentVO assembleCommentVO(Comment comment) {

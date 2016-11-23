@@ -63,7 +63,9 @@ public class ColumnController {
          */
         List<ArticleVO> articleVOs = new ArrayList<ArticleVO>();
         ArticleExample articleExample = new ArticleExample();
-        articleExample.createCriteria().andColumnIdEqualTo(columnId);
+        articleExample.createCriteria()
+                .andColumnIdEqualTo(columnId)
+                .andStatusEqualTo((byte) 1);
         articleExample.setOrderByClause("id desc");
         List<Article> articles = articleMapper.selectByExampleWithBLOBs(articleExample);
         for (Article article : articles) {
@@ -76,6 +78,9 @@ public class ColumnController {
 
     private ArticleVO assembleArticleVO(Article article) {
         ArticleVO articleVO = JSON.parseObject(JSON.toJSONString(article), ArticleVO.class);
+
+        articleVO.setId(String.valueOf(article.getId()));
+        articleVO.setColumnId(String.valueOf(article.getColumnId()));
 
         //查询用户
         User user = userMapper.selectByPrimaryKey(article.getUserId());
