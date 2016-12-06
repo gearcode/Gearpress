@@ -133,6 +133,18 @@ body, button, input, select, textarea {
     align: right;
 }
 
+.column-list th {
+    color: #ffffff;
+    background-color: #95A5A6;
+    border: 1px solid #AAA;
+    font-size: 16px;
+
+}
+
+.column-list th, .column-list td {
+    padding: 8px 18px;
+}
+
 /* 重写CSS */
 .navbar-nav > li > a {
   font-size: 16px;
@@ -153,6 +165,15 @@ h2 {
     font-size: 28px;
 }
 
-h4 {
+h3 {
+    font-size: 22px;
+}
+
+h4, h5 {
+    font-size: 18px;
+}
+
+.article_wrap h1, .article_wrap h2, .article_wrap h3, .article_wrap h4, .article_wrap h5 {
+    margin: 10px 0;
     font-size: 18px;
 }

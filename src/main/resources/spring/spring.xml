@@ -13,6 +13,16 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
+    <!-- spring mvc 拦截器 -->
+    <mvc:annotation-driven />
+    <mvc:default-servlet-handler />
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.gearcode.gearpress.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <context:component-scan base-package="com.gearcode.gearpress.*" ></context:component-scan>
 
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
@@ -58,15 +68,6 @@
             </list>
         </property>
     </bean>
-
-    <!-- spring mvc 拦截器 -->
-    <mvc:annotation-driven />
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="com.gearcode.gearpress.interceptor.LoginInterceptor"></bean>
-        </mvc:interceptor>
-    </mvc:interceptors>
 
     <!-- 设置上传文件, 一旦某个Request是一个MultipartRequest，它就会首先被MultipartResolver处理，然后再转发相应的Controller。 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>

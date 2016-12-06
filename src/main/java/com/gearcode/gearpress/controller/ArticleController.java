@@ -8,6 +8,7 @@ import com.gearcode.gearpress.dao.CommentMapper;
 import com.gearcode.gearpress.dao.UserMapper;
 import com.gearcode.gearpress.domain.*;
 import com.gearcode.gearpress.util.IdWorker;
+import com.gearcode.gearpress.util.LoginUtils;
 import com.gearcode.gearpress.vo.AjaxResult;
 import com.gearcode.gearpress.vo.ArticleVO;
 import org.slf4j.Logger;
@@ -201,6 +202,7 @@ public class ArticleController {
     public Object article_new(HttpServletRequest request, HttpServletResponse response) {
         Date now = new Date();
         AjaxResult result = new AjaxResult();
+        User loginUser = LoginUtils.getLoginUser(request);
 
         String title = ServletRequestUtils.getStringParameter(request, "title", "");
         Long columnId = ServletRequestUtils.getLongParameter(request, "columnId", 0);
@@ -217,7 +219,7 @@ public class ArticleController {
         Article article = new Article();
         article.setId(idWorker.nextId());
         article.setColumnId(columnId);
-        article.setUserId(0L);
+        article.setUserId(loginUser.getId());
         article.setViews(0L);
         article.setTitle(title);
         article.setContent("");

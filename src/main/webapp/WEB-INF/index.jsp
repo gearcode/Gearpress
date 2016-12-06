@@ -21,7 +21,7 @@
             <jsp:include page="common/nav.jsp"></jsp:include>
 
             <!-- 轮播组件 -->
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width:790px;height:340px;">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width:790px;height:300px;">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -31,13 +31,13 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <a href="http://www.jd.com/" target="_blank">
-                            <img src="http://img1.360buyimg.com/da/jfs/t3757/181/984089896/119779/f3764b8e/5819c0f1N68e59263.jpg" alt="">
+                        <a href="#">
+                            <img src="<%=path%>/images/c_1.jpg" alt="">
                         </a>
                         <div class="carousel-caption"></div>
                     </div>
                     <div class="item">
-                        <img src="http://img14.360buyimg.com/da/jfs/t3643/31/961808759/214308/57ad496f/581b20c8Nc81eea8c.jpg" alt="">
+                            <img src="<%=path%>/images/c_3.jpg" alt="">
                         <div class="carousel-caption"></div>
                     </div>
                 </div>

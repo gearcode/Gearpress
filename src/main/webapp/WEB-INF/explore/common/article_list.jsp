@@ -14,7 +14,7 @@
             <div class="article-status">
                 <span class="icon-group">
                     <span class="glyphicon glyphicon-calendar"></span>
-                    <span class="words"><fmt:formatDate pattern="yyyy年MM月dd日" value="${item.postTime}"/></span>
+                    <span class="words"><fmt:formatDate pattern="yyyy年MM月dd日" value="${item.createTime}"/></span>
                 </span>
                 <span class="icon-group">
                     <span class="glyphicon glyphicon-user"></span>

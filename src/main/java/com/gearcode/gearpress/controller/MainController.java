@@ -8,6 +8,7 @@ import com.gearcode.gearpress.dao.UserMapper;
 import com.gearcode.gearpress.domain.*;
 import com.gearcode.gearpress.vo.ArticleVO;
 import org.apache.ibatis.session.RowBounds;
+import org.jsoup.Jsoup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +77,11 @@ public class MainController {
 
         articleVO.setId(String.valueOf(article.getId()));
         articleVO.setColumnId(String.valueOf(article.getColumnId()));
+
+        /*
+        文章内容压缩并截断
+         */
+        articleVO.setContent(Jsoup.parse(article.getContent()).text());
 
         //查询用户
         User user = userMapper.selectByPrimaryKey(article.getUserId());
