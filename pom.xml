@@ -201,7 +201,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.10</version>
+            <version>1.2.61</version>
         </dependency>
 
         <!-- jackson -->
@@ -264,34 +264,13 @@
             </plugin>
 
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>7.3.1.v20110307</version>
-                <configuration>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>8080</port>
-                        </connector>
-                    </connectors>
-                    <webAppConfig>
-                        <contextPath>/</contextPath>
-                    </webAppConfig>
-                    <scanIntervalSeconds>5000</scanIntervalSeconds>
-                    <stopKey>foo</stopKey>
-                    <stopPort>7879</stopPort>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>tomcat-maven-plugin</artifactId>
-                <version>1.1</version>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
                 <configuration>
                     <path>/</path>
-                    <port>8080</port>
                     <uriEncoding>UTF-8</uriEncoding>
-                    <url>http://localhost:8080/</url>
-                    <server>tomcat6</server>
+                    <port>80</port>
                 </configuration>
             </plugin>
 
