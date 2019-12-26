@@ -16,7 +16,9 @@
         <jsp:include page="../common/include_css.jsp"></jsp:include>
     </head>
     <body>
-        <div class="main-content" style="width: 790px; margin: 20px auto;">
+
+    <div class="row" style="margin: 20px 0;">
+        <div class="main-content col-md-offset-2 col-md-8">
             <!-- 导航栏 -->
             <jsp:include page="../common/nav.jsp"></jsp:include>
 
@@ -51,7 +53,7 @@
         </div>
 
         <jsp:include page="../common/include_js.jsp"></jsp:include>
-
+    </div>
         <!-- ueditor -->
         <script type="text/javascript" charset="utf-8" src="<%=path %>/plugin/ueditor/ueditor.config.js"></script>
         <script type="text/javascript">
@@ -64,7 +66,7 @@
             $(function(){
                 //初始化编辑器
                 var ue_desc = UE.getEditor('ue_editor', {
-                    initialFrameHeight: 260
+                    initialFrameHeight: 460
                 });
             });
 
