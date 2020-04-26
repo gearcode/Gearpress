@@ -15,7 +15,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+	@Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         if(handler.getClass().isAssignableFrom(HandlerMethod.class)) {
             LoginRequired loginRequired = ((HandlerMethod) handler).getMethodAnnotation(LoginRequired.class);
@@ -28,10 +29,20 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
                 HttpSession session = request.getSession();
                 Object user = session.getAttribute(Constants.LOGIN_USER_SESSION_KEY);
                 logger.info("user:{}", user);
+
+                boolean isAjax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+
                 if(user == null) {
-                    //未登录, 重定向回首页
-                    response.sendRedirect("/");
-                    return false;
+                    if(isAjax) {
+                        response.setCharacterEncoding("UTF-8");
+                        response.addHeader("Content-Type", "application/json;charset=UTF-8");
+                        response.getWriter().write("{\"result\": \"noAuth\"}");
+                        return false;
+                    } else {
+                        //未登录, 重定向回首页
+                        response.sendRedirect("/");
+                        return false;
+                    }
                 } else {
                     //已登录
                     return true;

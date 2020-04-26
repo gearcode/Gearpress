@@ -39,7 +39,8 @@
                 <input type="text" name="title" class="form-control" placeholder="在此输入标题" value="${article.title}" style="margin-bottom: 14px;"/>
 
                 <!-- 编辑器 -->
-                <script id="ue_editor" name="content" type="text/plain">${article.content}</script>
+                <script id="ue_editor" name="ue_content" type="text/plain">${article.content}</script>
+                <input type="hidden" name="content" value="" />
 
                 <div class="btn_bar" style="margin: 15px 0;">
                     <p class="bootstrap-switch-square">
@@ -68,29 +69,81 @@
                 var ue_desc = UE.getEditor('ue_editor', {
                     initialFrameHeight: 460
                 });
+
+                ue_desc.ready(function() {
+                    UE.dom.domUtils.on(ue_desc.body,"keydown",function(oEvent){
+                        var oEvent = oEvent || window.oEvent;
+                        var nKeyCode = oEvent.keyCode || oEvent.which || oEvent.charCode;
+                        var bCtrlKeyCode = oEvent.ctrlKey || oEvent.metaKey;
+                        if( nKeyCode == 83 && bCtrlKeyCode  ) {
+                            save();
+                            //阻止触发默认的ctrl+s事件
+                            oEvent.returnValue = false;
+                        }
+                    });
+                });
+
+                $(document).bind('keydown', function(e) {
+                  if(e.ctrlKey && (e.which == 83)) {
+                    e.preventDefault();
+                    save();
+                    return false;
+                  }
+                });
             });
 
             jQuery(function($) {
                 $("#form").on("submit", function(e) {
-                    $("#form .btn_bar button").button("loading");
-                    $(this).ajaxSubmit({
-                        success: function(response, status, xhr, $form) {
-                            $.notify({
-                            	icon: 'glyphicon glyphicon-ok',
-                            	message: "保存成功！"
-                            },{
-                                type: "success",
-                                allow_dismiss: false,
-                                delay: 1000
-                            });
-
-                            $("#form .btn_bar button").button("reset");
-                        }
-                    });
+                    save();
                     return false;
                 });
             });
 
+            function save() {
+                $("#form .btn_bar button").button("loading");
+                $("#form input[name=content]").val(UE.getEditor('ue_editor').getContent());
+
+                $("#form").ajaxSubmit({
+                    success: function(response, status, xhr, $form) {
+                        console.log(response);
+
+                        if(response.result == 'success') {
+                            $.notify({
+                                icon: 'glyphicon glyphicon-ok',
+                                message: "保存成功！"
+                            },{
+                                type: "success",
+                                allow_dismiss: false,
+                                delay: 1000,
+                                z_index: 10000
+                            });
+                        } else if (response.result == 'noAuth') {
+                            $.notify({
+                                icon: 'glyphicon glyphicon-warning-sign',
+                                message: "登录失效！"
+                            },{
+                                type: "danger",
+                                allow_dismiss: false,
+                                delay: 1000,
+                                z_index: 10000
+                            });
+                        } else {
+                            $.notify({
+                                icon: 'glyphicon glyphicon-warning-sign',
+                                message: "保存失败！"
+                            },{
+                                type: "danger",
+                                allow_dismiss: false,
+                                delay: 1000,
+                                z_index: 10000
+                            });
+                        }
+                        $("#form .btn_bar button").button("reset");
+                    }
+                });
+            }
+
+            setInterval(save, 60000);
         </script>
     </body>
 </html>

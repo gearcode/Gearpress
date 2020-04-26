@@ -166,7 +166,7 @@ public class ArticleController {
         if(null == article.getId()) {
             return "error";
         } else {
-            logger.info("save article: {}", JSON.toJSONString(article));
+            logger.info("save article: {}", article.getTitle());
 
             String postStatus = ServletRequestUtils.getStringParameter(request, "post_status", "000");
             if(postStatus.equals("on")) {
@@ -193,6 +193,7 @@ public class ArticleController {
 
         Map<String, Object> ajaxResult = new HashMap<String, Object>();
         ajaxResult.put("id", String.valueOf(article.getId()));
+        ajaxResult.put("result", "success");
         return ajaxResult;
     }
 
