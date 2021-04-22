@@ -14,7 +14,7 @@
         <guava.version>19.0</guava.version>
         <spring.version>3.2.5.RELEASE</spring.version>
         <spring-mybaitis.version>1.2.1</spring-mybaitis.version>
-        <mybaitis.version>3.2.3</mybaitis.version>
+        <mybaitis.version>3.5.6</mybaitis.version>
         <resteasy.version>2.2.1.GA</resteasy.version>
     </properties>
 
