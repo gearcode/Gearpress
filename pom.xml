@@ -12,7 +12,7 @@
     <properties>
         <jdbc.version>5.1.20</jdbc.version>
         <guava.version>19.0</guava.version>
-        <spring.version>3.2.5.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
         <spring-mybaitis.version>1.2.1</spring-mybaitis.version>
         <mybaitis.version>3.2.3</mybaitis.version>
         <resteasy.version>2.2.1.GA</resteasy.version>
